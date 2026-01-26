@@ -68,23 +68,24 @@ export function Hero() {
           {/* Right Image */}
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-200 to-purple-200 rounded-3xl blur-3xl opacity-40"></div>
-         <div className="w-full rounded-3xl overflow-hidden bg-stone-100">
-  <img
-    src="https://mixed-yellow-gull.myfilebase.com/ipfs/QmbBNMxKur7uFVncfgrCL5jW8ezzvTnGPsf84BzLX6hKFu"
-    alt="AI and Software Development"
-    loading="eager"
-    decoding="async"
-    className="w-full h-[500px] object-cover object-center"
-    style={{
-      imageRendering: "auto",
-      transform: "translateZ(0)",
-    }}
-  />
-</div>
+            <div className="w-full rounded-3xl overflow-hidden bg-stone-100">
+              <img
+                // src="https://mixed-yellow-gull.myfilebase.com/ipfs/QmbBNMxKur7uFVncfgrCL5jW8ezzvTnGPsf84BzLX6hKFu"
+                src="https://mixed-yellow-gull.myfilebase.com/ipfs/QmNTj8f6CGUBpJfLWR8p93yKC2wcUf3baKJA8fnCdsTT8r"
+                alt="AI and Software Development"
+                loading="eager"
+                decoding="async"
+                className="w-full h-[500px] object-cover object-center"
+                style={{
+                  imageRendering: "auto",
+                  transform: "translateZ(0)",
+                }}
+              />
+            </div>
 
 
             {/* Floating Cards */}
-            <div className="absolute -bottom-6 -left-6 bg-white backdrop-blur-sm p-4 rounded-2xl shadow-xl border border-gray-200">
+            {/* <div className="absolute -bottom-6 -left-6 bg-white backdrop-blur-sm p-4 rounded-2xl shadow-xl border border-gray-200">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
                   ✓
@@ -94,7 +95,7 @@ export function Hero() {
                   <div className="text-sm text-gray-600">Innovation Driven</div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

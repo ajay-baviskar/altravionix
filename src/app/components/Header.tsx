@@ -17,11 +17,15 @@ export function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center">
-            <div className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              TechFlow
-            </div>
-          </div>
+          {/* Logo */}
+<div className="flex items-center">
+  <img
+    src="https://mixed-yellow-gull.myfilebase.com/ipfs/QmWZegzxfgNPyiDyYE1pxY9Dfw9SwHHB4o1a2bH52Tw3mT"
+    alt="ABNexia Logo"
+    className="h-12 md:h-15 w-auto object-contain"
+  />
+</div>
+
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">

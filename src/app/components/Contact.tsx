@@ -56,8 +56,8 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900 mb-1">Email Us</div>
-                  <a href="mailto:hello@techflow.com" className="text-indigo-600 hover:text-indigo-700 transition-colors">
-                    hello@techflow.com
+                  <a href="mailto:hello@Altravionix.com" className="text-indigo-600 hover:text-indigo-700 transition-colors">
+                    hello@Altravionix.com
                   </a>
                 </div>
               </div>

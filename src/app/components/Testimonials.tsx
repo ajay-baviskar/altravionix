@@ -7,7 +7,7 @@ export function Testimonials() {
       role: 'CEO, TechStart Inc.',
       image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop',
       rating: 5,
-      text: 'TechFlow transformed our digital presence completely. Their team delivered an outstanding e-commerce platform that increased our sales by 300%. Highly professional and innovative!',
+      text: 'Altravionix transformed our digital presence completely. Their team delivered an outstanding e-commerce platform that increased our sales by 300%. Highly professional and innovative!',
       gradient: 'from-pink-500 to-rose-500',
     },
     {
@@ -15,7 +15,7 @@ export function Testimonials() {
       role: 'Founder, StartupHub',
       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop',
       rating: 5,
-      text: 'Working with TechFlow was a game-changer. They built our mobile app from scratch and the results exceeded all expectations. The attention to detail and commitment to quality is unmatched.',
+      text: 'Working with Altravionix was a game-changer. They built our mobile app from scratch and the results exceeded all expectations. The attention to detail and commitment to quality is unmatched.',
       gradient: 'from-blue-500 to-cyan-500',
     },
     {
@@ -39,7 +39,7 @@ export function Testimonials() {
     //   role: 'Owner, Boutique Ventures',
     //   image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop',
     //   rating: 5,
-    //   text: 'From concept to launch, TechFlow guided us every step of the way. Our website is beautiful, fast, and converts visitors into customers. Couldn\'t be happier!',
+    //   text: 'From concept to launch, Altravionix guided us every step of the way. Our website is beautiful, fast, and converts visitors into customers. Couldn\'t be happier!',
     //   gradient: 'from-orange-500 to-amber-500',
     // },
     // {
@@ -47,7 +47,7 @@ export function Testimonials() {
     //   role: 'VP Product, FutureTech',
     //   image: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150&h=150&fit=crop',
     //   rating: 5,
-    //   text: 'TechFlow understands modern technology like no other. They helped us implement AI features that set us apart from competitors. True innovation partners!',
+    //   text: 'Altravionix understands modern technology like no other. They helped us implement AI features that set us apart from competitors. True innovation partners!',
     //   gradient: 'from-violet-500 to-purple-500',
     // },
   ];

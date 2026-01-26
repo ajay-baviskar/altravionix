@@ -87,10 +87,10 @@ export function Services() {
                 </ul>
 
                 {/* Learn More Link */}
-                <button className={`flex items-center gap-2 font-semibold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent group-hover:gap-3 transition-all`}>
+                {/* <button className={`flex items-center gap-2 font-semibold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent group-hover:gap-3 transition-all`}>
                   Learn More
                   <ArrowRight size={16} />
-                </button>
+                </button> */}
               </div>
             </div>
           ))}

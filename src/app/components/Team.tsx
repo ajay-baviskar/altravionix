@@ -6,10 +6,10 @@ export function Team() {
       name: 'Sarah Mitchell',
       role: 'Chief Executive Officer',
       image: 'https://images.unsplash.com/photo-1762341116897-921e2a52f7ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGV4ZWN1dGl2ZSUyMHdvbWFufGVufDF8fHx8MTc2ODc5NzU3OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      bio: 'With over 15 years of experience in technology and business strategy, Sarah leads TechFlow with a vision to democratize advanced technology for businesses of all sizes. She has successfully scaled multiple tech startups and holds an MBA from Stanford.',
+      bio: 'With over 15 years of experience in technology and business strategy, Sarah leads Altravionix with a vision to democratize advanced technology for businesses of all sizes. She has successfully scaled multiple tech startups and holds an MBA from Stanford.',
       expertise: ['Business Strategy', 'Digital Transformation', 'Leadership', 'Growth Management'],
       linkedin: '#',
-      email: 'sarah@techflow.com',
+      email: 'sarah@Altravionix.com',
     },
     {
       name: 'David Chen',
@@ -18,7 +18,7 @@ export function Team() {
       bio: 'David is a technology visionary with expertise in AI, cloud architecture, and software engineering. He has led engineering teams at major tech companies and holds a PhD in Computer Science. His passion is building scalable, innovative solutions.',
       expertise: ['AI & Machine Learning', 'Cloud Architecture', 'Full-Stack Development', 'DevOps'],
       linkedin: '#',
-      email: 'david@techflow.com',
+      email: 'david@Altravionix.com',
     },
   ];
 
@@ -51,7 +51,7 @@ export function Team() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
-
+            
               {/* Content */}
               <div className="p-8">
                 <h3 className="text-2xl font-bold mb-1 text-gray-900">{leader.name}</h3>

@@ -15,7 +15,7 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <div className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-4">
-              TechFlow
+              Altravionix
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Building scalable digital and AI solutions for modern businesses. Innovation-driven, startup-focused technology company.
@@ -98,8 +98,8 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-indigo-400 flex-shrink-0" />
-                <a href="mailto:hello@techflow.com" className="text-gray-400 hover:text-white text-sm">
-                  hello@techflow.com
+                <a href="mailto:hello@Altravionix.com" className="text-gray-400 hover:text-white text-sm">
+                  hello@Altravionix.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -116,7 +116,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} TechFlow. All rights reserved.
+              © {new Date().getFullYear()} Altravionix. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>

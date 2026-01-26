@@ -8,7 +8,7 @@ export function About() {
           {/* Left Content */}
           <div>
             <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
-              About <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">TechFlow</span>
+              About <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Altravionix</span>
             </h2>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               We are a startup-focused, innovation-driven technology company dedicated to helping businesses 
