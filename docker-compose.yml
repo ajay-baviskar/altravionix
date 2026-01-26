@@ -12,11 +12,10 @@ services:
       - VIRTUAL_HOST=altravionix.com,www.altravionix.com
       - VIRTUAL_PORT=5000
       - LETSENCRYPT_HOST=altravionix.com,www.altravionix.com
-      - LETSENCRYPT_EMAIL=ajay.baviskar88@gmail.com
-
+      - LETSENCRYPT_EMAIL=admin@altravionix.com
     networks:
-      - nginx-proxy
+      - ngnix-proxy_shared-network
 
 networks:
-  nginx-proxy:
+  ngnix-proxy_shared-network:
     external: true
