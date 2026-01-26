@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   web:
+    build: .
     image: altravionix-react
     container_name: altravionix-react
     restart: always
