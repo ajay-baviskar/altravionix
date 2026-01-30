@@ -1,4 +1,5 @@
-FROM node:18-alpine
+# ---------- Build Stage ----------
+FROM node:18-alpine AS build
 
 WORKDIR /app
 
@@ -6,7 +7,20 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
+RUN npm run build
+
+
+# ---------- Production Stage ----------
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Install static server
+RUN npm install -g serve
+
+# Copy build output
+COPY --from=build /app/dist ./dist
 
 EXPOSE 5000
 
-CMD ["npm", "run", "dev"]
+CMD ["serve", "-s", "dist", "-l", "5000"]
