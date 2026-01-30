@@ -1,18 +1,13 @@
-version: '3.8'
+version: "3.8"
 
 services:
   react-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     container_name: altravionix
     ports:
       - "5000:5000"
     environment:
+      - PORT=5000
       - CHOKIDAR_USEPOLLING=true
-      - WDS_SOCKET_PORT=0
-    volumes:
-      - .:/app
-      - /app/node_modules
     stdin_open: true
     tty: true
