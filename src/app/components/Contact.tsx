@@ -21,41 +21,49 @@ export function Contact() {
   const [success, setSuccess] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-    setSuccess(null);
+  e.preventDefault();
+  setLoading(true);
+  setError(null);
+  setSuccess(null);
+
+  try {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_BASE_URL}/api/contact`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    // 🔥 SAFELY READ RESPONSE
+    const text = await response.text();
+    let data;
 
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_BASE_URL}/api/contact`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data?.message || 'Failed to submit form');
-      }
-
-      setSuccess('Thank you for reaching out! We will get back to you soon.');
-      setFormData({ name: '', email: '', service: '', message: '' });
-
-      // Auto hide success message after 5 seconds
-      setTimeout(() => setSuccess(null), 5000);
-    } catch (err: any) {
-      console.error('Contact API error:', err);
-      setError(err?.message || 'Something went wrong. Please try again later.');
-    } finally {
-      setLoading(false);
+      data = JSON.parse(text);
+    } catch {
+      throw new Error('Server returned invalid response');
     }
-  };
+
+    if (!response.ok) {
+      throw new Error(data?.message || 'Failed to submit form');
+    }
+
+    setSuccess('Thank you for reaching out! We will get back to you soon.');
+    setFormData({ name: '', email: '', service: '', message: '' });
+
+    setTimeout(() => setSuccess(null), 5000);
+  } catch (err: any) {
+    console.error('Contact API error:', err);
+    setError(err.message || 'Something went wrong. Please try again later.');
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const handleChange = (
     e: React.ChangeEvent<
