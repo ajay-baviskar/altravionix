@@ -18,34 +18,40 @@ export function Contact() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setSuccess(null);
 
     try {
-      const res = await fetch(
+      const response = await fetch(
         `${import.meta.env.VITE_API_BASE_URL}/api/contact`,
         {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify(formData),
         }
       );
 
-      const data = await res.json();
+      const data = await response.json();
 
-      if (!res.ok) {
+      if (!response.ok) {
         throw new Error(data?.message || 'Failed to submit form');
       }
 
-      alert('Thank you for reaching out! We will get back to you soon.');
+      setSuccess('Thank you for reaching out! We will get back to you soon.');
       setFormData({ name: '', email: '', service: '', message: '' });
+
+      // Auto hide success message after 5 seconds
+      setTimeout(() => setSuccess(null), 5000);
     } catch (err: any) {
       console.error('Contact API error:', err);
-      setError(err?.message || 'Something went wrong');
-      alert('Failed to submit form. Please try again later.');
+      setError(err?.message || 'Something went wrong. Please try again later.');
     } finally {
       setLoading(false);
     }
@@ -89,68 +95,45 @@ export function Contact() {
               </p>
             </div>
 
-            {/* Contact Cards */}
             <div className="space-y-4">
-              <div className="flex items-start gap-4 p-6 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl shadow-md hover:shadow-lg transition-all border border-indigo-100">
-                <div className="w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <div className="flex items-start gap-4 p-6 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl shadow-md border border-indigo-100">
+                <div className="w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
                   <Mail size={20} className="text-white" />
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900 mb-1">Email Us</div>
-                  <a
-                    href="mailto:hello@Altravionix.com"
-                    className="text-indigo-600 hover:text-indigo-700 transition-colors"
-                  >
-                    hello@Altravionix.com
+                  <a href="mailto:ajay@altravionix.com" className="text-indigo-600">
+                    ajay@altravionix.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-md hover:shadow-lg transition-all border border-purple-100">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <div className="flex items-start gap-4 p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-md border border-purple-100">
+                <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center">
                   <Phone size={20} className="text-white" />
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900 mb-1">Call Us</div>
-                  <a
-                    href="tel:+1234567890"
-                    className="text-purple-600 hover:text-purple-700 transition-colors"
-                  >
-                    +1 (234) 567-890
+                  <a href="tel:+8087936880" className="text-purple-600">
+                    +91 8087936880 / +91 8793314670
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl shadow-md hover:shadow-lg transition-all border border-blue-100">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <div className="flex items-start gap-4 p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl shadow-md border border-blue-100">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl flex items-center justify-center">
                   <MapPin size={20} className="text-white" />
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900 mb-1">Visit Us</div>
                   <p className="text-gray-600">
-                    123 Tech Street, Innovation District
-                    <br />
-                    San Francisco, CA 94105
-                  </p>
-                </div>
-              </div>
-            </div>
+                    Flat No. 04, Sai Kamal Building, Sonar Ali, Dahiwali
 
-            {/* Business Hours */}
-            <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white shadow-lg">
-              <h4 className="font-bold mb-3">Business Hours</h4>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span>Monday - Friday:</span>
-                  <span>9:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Saturday:</span>
-                  <span>10:00 AM - 4:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Sunday:</span>
-                  <span>Closed</span>
+                    <br />
+
+Tal-Karjat, Dist -Raigad
+Maharashtra – 410201
+India                  </p>
                 </div>
               </div>
             </div>
@@ -158,83 +141,82 @@ export function Contact() {
 
           {/* Contact Form */}
           <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-8 lg:p-10 shadow-lg border border-indigo-100">
+            
+            {/* Success Message */}
+            {success && (
+              <div className="mb-6 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-green-800 shadow-sm">
+                <div className="flex items-center gap-2">
+                  <span className="text-lg">✅</span>
+                  <span className="font-medium">{success}</span>
+                </div>
+              </div>
+            )}
+
+            {/* Error Message */}
+            {error && (
+              <div className="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-red-800 shadow-sm">
+                <div className="flex items-center gap-2">
+                  <span className="text-lg">❌</span>
+                  <span className="font-medium">{error}</span>
+                </div>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600 focus:outline-none transition-all bg-white"
-                  placeholder="John Doe"
-                />
-              </div>
+              <input type="hidden" name="name" />
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600 focus:outline-none transition-all bg-white"
-                  placeholder="john@example.com"
-                />
-              </div>
+              <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white"
+              />
 
-              <div>
-                <label htmlFor="service" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Service Interested In *
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600 focus:outline-none transition-all bg-white"
-                >
-                  <option value="">Select a service</option>
-                  <option value="app-development">Application Development</option>
-                  <option value="web-development">Website Development</option>
-                  <option value="digital-marketing">Digital Marketing</option>
-                  <option value="ai-solutions">AI Solutions</option>
-                  <option value="consultation">General Consultation</option>
-                </select>
-              </div>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white"
+              />
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600 focus:outline-none transition-all resize-none bg-white"
-                  placeholder="Tell us about your project..."
-                />
-              </div>
+              <select
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white"
+              >
+                <option value="">Select a service</option>
+                <option value="app-development">Application Development</option>
+                <option value="web-development">Website Development</option>
+                <option value="digital-marketing">Digital Marketing</option>
+                <option value="ai-solutions">AI Solutions</option>
+                <option value="consultation">General Consultation</option>
+              </select>
+
+              <textarea
+                name="message"
+                rows={5}
+                placeholder="Tell us about your project..."
+                value={formData.message}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white resize-none"
+              />
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-2 disabled:opacity-60"
+                className="w-full px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl hover:shadow-xl transition-all disabled:opacity-60"
               >
                 {loading ? 'Sending...' : 'Send Message'}
-                <Send size={20} />
+                <Send size={18} className="inline ml-2" />
               </button>
             </form>
           </div>

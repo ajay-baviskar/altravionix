@@ -92,20 +92,21 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-indigo-400 flex-shrink-0 mt-1" />
                 <span className="text-gray-400 text-sm">
-                  123 Tech Street, Innovation District<br />
-                  San Francisco, CA 94105
+                  Flat No. 04, Sai Kamal Building, Sonar Ali, Dahiwali<br />
+                  Tal-Karjat, Dist -Raigad Maharashtra – 410201 India
+
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-indigo-400 flex-shrink-0" />
-                <a href="mailto:hello@Altravionix.com" className="text-gray-400 hover:text-white text-sm">
-                  hello@Altravionix.com
+                <a href="mailto:ajay@altravionix.com" className="text-gray-400 hover:text-white text-sm">
+                  ajay@altravionix.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-indigo-400 flex-shrink-0" />
-                <a href="tel:+1234567890" className="text-gray-400 hover:text-white text-sm">
-                  +1 (234) 567-890
+                <a href="tel:+8087936880" className="text-gray-400 hover:text-white text-sm">
+                    +91 8087936880 / +91 8793314670
                 </a>
               </li>
             </ul>
