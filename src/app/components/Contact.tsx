@@ -1,23 +1,61 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
+type ContactFormData = {
+  name: string;
+  email: string;
+  service: string;
+  message: string;
+};
+
 export function Contact() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     service: '',
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    alert('Thank you for reaching out! We will get back to you soon.');
-    setFormData({ name: '', email: '', service: '', message: '' });
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/api/contact`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data?.message || 'Failed to submit form');
+      }
+
+      alert('Thank you for reaching out! We will get back to you soon.');
+      setFormData({ name: '', email: '', service: '', message: '' });
+    } catch (err: any) {
+      console.error('Contact API error:', err);
+      setError(err?.message || 'Something went wrong');
+      alert('Failed to submit form. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -30,7 +68,10 @@ export function Contact() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Let's Build <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Your Idea</span>
+            Let's Build{' '}
+            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              Your Idea
+            </span>
           </h2>
           <p className="text-xl text-gray-600">
             Ready to start your next project? Get in touch and let's create something amazing together.
@@ -43,7 +84,7 @@ export function Contact() {
             <div>
               <h3 className="text-2xl font-bold mb-6 text-gray-900">Get in Touch</h3>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                We're here to help bring your vision to life. Whether you have a question about our services, 
+                We're here to help bring your vision to life. Whether you have a question about our services,
                 pricing, or anything else, our team is ready to answer all your questions.
               </p>
             </div>
@@ -56,7 +97,10 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900 mb-1">Email Us</div>
-                  <a href="mailto:hello@Altravionix.com" className="text-indigo-600 hover:text-indigo-700 transition-colors">
+                  <a
+                    href="mailto:hello@Altravionix.com"
+                    className="text-indigo-600 hover:text-indigo-700 transition-colors"
+                  >
                     hello@Altravionix.com
                   </a>
                 </div>
@@ -68,7 +112,10 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900 mb-1">Call Us</div>
-                  <a href="tel:+1234567890" className="text-purple-600 hover:text-purple-700 transition-colors">
+                  <a
+                    href="tel:+1234567890"
+                    className="text-purple-600 hover:text-purple-700 transition-colors"
+                  >
                     +1 (234) 567-890
                   </a>
                 </div>
@@ -81,7 +128,8 @@ export function Contact() {
                 <div>
                   <div className="font-semibold text-gray-900 mb-1">Visit Us</div>
                   <p className="text-gray-600">
-                    123 Tech Street, Innovation District<br />
+                    123 Tech Street, Innovation District
+                    <br />
                     San Francisco, CA 94105
                   </p>
                 </div>
@@ -182,9 +230,10 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-2"
+                disabled={loading}
+                className="w-full px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-2 disabled:opacity-60"
               >
-                Send Message
+                {loading ? 'Sending...' : 'Send Message'}
                 <Send size={20} />
               </button>
             </form>
